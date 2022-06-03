@@ -1,0 +1,4 @@
+name=AnimatedImage Demo
+author=Dustin Mierau
+description=Simple demonstration of using AnimatedImage.
+bundleID=co.goodmake.animatedimage

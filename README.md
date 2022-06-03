@@ -4,6 +4,8 @@ The goal of AnimatedImage is to be able to plop in animated images in place of s
 
 AnimatedImage is less than 100 lines of Lua, and most of that is just boilerplate getter/setter as AnimatedImage sits on top of `playdate.graphics.image` and `playdate.graphics.animation.loop`. Simply replace `playdate.graphics.image.new` with `AnimatedImage.new` to get started, and change the path from a static image to that of an image table or gif.
 
+![Example Animation](/demo.gif?raw=true "Example Animation")
+
 # API
 
 AnimatedImage mimics the built-in Playdate SDK image object. This means any function supported by `playdate.graphics.image` can be called directly on an AnimatedImage. That said, AnimatedImage does have a few functions for controlling playback.

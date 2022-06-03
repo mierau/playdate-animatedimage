@@ -6,6 +6,10 @@ AnimatedImage is less than 100 lines of Lua, and most of that is just boilerplat
 
 ![Example Animation](/demo.gif?raw=true "Example Animation")
 
+# License
+
+Public Domain: Do what you wish! Just don't hold me accountable. :)
+
 # API
 
 AnimatedImage mimics the built-in Playdate SDK image object. This means any function supported by `playdate.graphics.image` can be called directly on an AnimatedImage. That said, AnimatedImage does have a few functions for controlling playback.

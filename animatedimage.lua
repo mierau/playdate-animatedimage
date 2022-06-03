@@ -35,7 +35,7 @@ function AnimatedImage.new(image_table_path, options)
 end
 
 function AnimatedImage:reset()
-	self.loop.frame = 1
+	self.loop.frame = self.loop.startFrame
 end
 
 function AnimatedImage:setDelay(delay)

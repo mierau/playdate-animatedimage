@@ -14,7 +14,7 @@ Public Domain: Do what you wish! Just don't hold me accountable. :)
 
 AnimatedImage mimics the built-in Playdate SDK image object. This means any function supported by `playdate.graphics.image` can be called directly on an AnimatedImage. That said, AnimatedImage does have a few functions for controlling playback.
 
-`AnimatedImage.new(image_table_path, options)`
+## `AnimatedImage.new(image_table_path, options)`
 Create a new `AnimatedImage`.
 
 `image_table_path` can be a path to either a simple image, an image table, or a GIF.
@@ -26,47 +26,46 @@ Create a new `AnimatedImage`.
 `options.last` is the index of the last frame in the animation.
 
 
-`AnimatedImage:reset()`
+## `AnimatedImage:reset()`
 Reset the frame to the start frame of the `AnimatedImage`.
 
-`AnimatedImage:setDelay(delay)`
+## `AnimatedImage:setDelay(delay)`
 Change the delay between frames in the animation.
 
 `delay` is the amount of time (in milliseconds) before moving to the next frame.
 
-`AnimatedImage:getDelay()`
+## `AnimatedImage:getDelay()`
 Get the currently set delay (in milliseconds).
 
-`AnimatedImage:setShouldLoop(should_loop)`
+## `AnimatedImage:setShouldLoop(should_loop)`
 Change whether the animation should loop or not.
 
 `should_loop` is a boolean that dictates whether the animation should loop or not.
 
-`AnimatedImage:getShouldLoop()`
+## `AnimatedImage:getShouldLoop()`
 Get whether the animation will loop or not.
 
-`AnimatedImage:setPaused(paused)`
+## `AnimatedImage:setPaused(paused)`
 Pause or play the animation.
-
 `paused` is a boolean which determines if the animation should play or pause. Paused animations will stop on the current frame.
 
-`AnimatedImage:getPaused()`
+## `AnimatedImage:getPaused()`
 Get whether the animation is paused or not.
 
-`AnimatedImage:setFrame(frame)`
+## `AnimatedImage:setFrame(frame)`
 Manually set the frame to display.
 
 `frame` is the index of the frame to display.
 
-`AnimatedImage:getFrame()`
+## `AnimatedImage:getFrame()`
 Get the currently displayed frame.
 
-`AnimatedImage:setFirstFrame(frame)`
+## `AnimatedImage:setFirstFrame(frame)`
 Set the frame the animation starts and loops from.
 
 `frame` is the index of the frame to start from.
 
-`AnimatedImage:setEndFrame(frame)`
+## `AnimatedImage:setEndFrame(frame)`
 Set the frame the animation ends at.
 
 `frame` is the index of the frame to end on.

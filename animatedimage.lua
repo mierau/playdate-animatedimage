@@ -7,10 +7,10 @@ AnimatedImage = {}
 
 -- image_table_path should be a path to an image table.
 -- options is a table of initial settings:
---   delay: 
---   paused: start in a paused state.
---   loop: loop the animation.
---   
+--   delay: time in milliseconds to wait before moving to next frame. (default: 100ms)
+--   paused: start in a paused state. (default: false)
+--   loop: loop the animation. (default: false)
+--   step: number of frames to step. (default: 1)
 
 function AnimatedImage.new(image_table_path, options)
 	options = options or {}
@@ -25,6 +25,7 @@ function AnimatedImage.new(image_table_path, options)
 	animation_loop.paused = options.paused and true or false
 	animation_loop.startFrame = options.first or 1
 	animation_loop.endFrame = options.last or image_table:getLength()
+	animation_loop.step = options.step or 1
 	
 	local animated_image = {}
 	setmetatable(animated_image, AnimatedImage)
@@ -54,6 +55,14 @@ function AnimatedImage:getShouldLoop()
 	return self.loop.shouldLoop
 end
 
+function AnimatedImage:setStep(frame_count)
+	self.loop.step = frame_count
+end
+
+function AnimatedImage:getStep()
+	return self.loop.step
+end
+
 function AnimatedImage:setPaused(paused)
 	self.loop.paused = paused
 end
@@ -76,6 +85,10 @@ end
 
 function AnimatedImage:setLastFrame(frame)
 	self.loop.endFrame = frame
+end
+
+function AnimatedImage:isComplete()
+	return self.loop:isValid()
 end
 
 AnimatedImage.__index = function(animated_image, key)

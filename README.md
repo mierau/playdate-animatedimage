@@ -24,6 +24,7 @@ Create a new `AnimatedImage`.
 `options.paused` is a boolean which either starts the animation in a paused or playing state.
 `options.first` is the index of the first frame in the animation.
 `options.last` is the index of the last frame in the animation.
+`options.step` is the number of images in the image table to step through each frame.
 
 
 ## `AnimatedImage:reset()`
@@ -44,6 +45,14 @@ Change whether the animation should loop or not.
 
 ## `AnimatedImage:getShouldLoop()`
 Get whether the animation will loop or not.
+
+## `AnimatedImage:setStep(frame_count)`
+Set the number of images in the image table to step through each frame.
+
+`frame_count` is the number of images to step through each frame.
+
+## `AnimatedImage:getStep()`
+Get the number of images in the image table that will be stepped through each frame.
 
 ## `AnimatedImage:setPaused(paused)`
 Pause or play the animation.
@@ -70,3 +79,5 @@ Set the frame the animation ends at.
 
 `frame` is the index of the frame to end on.
 
+## `AnimatedImage:isComplete()`
+Determine if an animated image has finished animating. However, this will always return false if the animation loops.

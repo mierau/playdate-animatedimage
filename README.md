@@ -81,3 +81,6 @@ Set the frame the animation ends at.
 
 ## `AnimatedImage:isComplete()`
 Determine if an animated image has finished animating. However, this will always return false if the animation loops.
+
+## `AnimatedImage:getImage()`
+Returns the image for the current frame.

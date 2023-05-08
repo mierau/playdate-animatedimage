@@ -91,6 +91,10 @@ function AnimatedImage:isComplete()
 	return self.loop:isValid()
 end
 
+function AnimatedImage:getImage()
+	return self.image_table:getImage(self.loop.frame)
+end
+
 AnimatedImage.__index = function(animated_image, key)
 	local proxy_value = rawget(AnimatedImage, key)
 	if proxy_value then

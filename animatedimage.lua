@@ -5,20 +5,34 @@ local animation <const> = playdate.graphics.animation
 
 AnimatedImage = {}
 
--- image_table_path should be a path to an image table.
+-- image_table_path should be an image table or a path to an image table.
 -- options is a table of initial settings:
 --   delay: time in milliseconds to wait before moving to next frame. (default: 100ms)
 --   paused: start in a paused state. (default: false)
 --   loop: loop the animation. (default: false)
 --   step: number of frames to step. (default: 1)
+--   sequence: an array of frame numbers in order to be used in the animation e.g. `{1, 1, 3, 5, 2}`. (default: all of the frames from the specified image table)
 
 function AnimatedImage.new(image_table_path, options)
 	options = options or {}
 	
-	local image_table = graphics.imagetable.new(image_table_path)
+	local image_table = image_table_path
+	if type(image_table_path) == "string" then
+		image_table = graphics.imagetable.new(image_table_path)
+	end
+		
 	if image_table == nil then
-		print("ANIMATEDIMAGE: FAILED TO LOAD IMAGE TABLE AT", image_table_path)
+		print("ANIMATEDIMAGE: INVALID IMAGE USED", image_table_path)
 		return nil
+	end
+	
+	-- Build sequence image table, if specified.
+	if options.sequence ~= nil then
+		local sequence_image_table = graphics.imagetable.new(#options.sequence)
+		for i, v in ipairs(options.sequence) do
+			sequence_image_table:setImage(i, image_table:getImage(v))
+		end
+		image_table = sequence_image_table
 	end
 	
 	local animation_loop = animation.loop.new(options.delay or 100, image_table, options.loop and true or false)

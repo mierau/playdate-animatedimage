@@ -17,7 +17,7 @@ AnimatedImage mimics the built-in Playdate SDK image object. This means any func
 ## `AnimatedImage.new(image_table_path, options)`
 Create a new `AnimatedImage`.
 
-`image_table_path` can be a path to either a simple image, an image table, or a GIF.
+`image_table_path` can be a path to either a simple image, an image table, or a GIF. You can also pass an image table if you already have one loaded.
 `options` is a table of optional settings for your `AnimatedImage`.
 `options.delay` is the amount of time to delay (in milliseconds) before moving to the next frame.
 `options.loop` is a boolean which enables or disables looping of the animation.
@@ -25,6 +25,7 @@ Create a new `AnimatedImage`.
 `options.first` is the index of the first frame in the animation.
 `options.last` is the index of the last frame in the animation.
 `options.step` is the number of images in the image table to step through each frame.
+`options.sequence` is an optional array of frame numbers the animation should use from the specified image table. e.g. `{1, 1, 4, 2, 3}`
 
 
 ## `AnimatedImage:reset()`

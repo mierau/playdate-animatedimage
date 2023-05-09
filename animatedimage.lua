@@ -102,7 +102,7 @@ function AnimatedImage:setLastFrame(frame)
 end
 
 function AnimatedImage:isComplete()
-	return self.loop:isValid()
+	return not self.loop:isValid()
 end
 
 function AnimatedImage:getImage()

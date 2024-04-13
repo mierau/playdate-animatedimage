@@ -70,6 +70,14 @@ Manually set the frame to display.
 ## `AnimatedImage:getFrame()`
 Get the currently displayed frame.
 
+## `AnimatedImage:setTime(milliseconds)`
+Manually set the current time when using delta-time playback (see `update`).
+
+`milliseconds` is the total elapsed time.
+
+## `AnimatedImage:getTime()`
+Get the current elapsed time when using delta-time playback (see `update`).
+
 ## `AnimatedImage:setFirstFrame(frame)`
 Set the frame the animation starts and loops from.
 
@@ -85,3 +93,8 @@ Determine if an animated image has finished animating. However, this will always
 
 ## `AnimatedImage:getImage()`
 Returns the image for the current frame.
+
+## `AnimatedImage:update(dt)`
+Call this each frame to update the elapsed time for delta-time playback. Calling `update` is strictly _optional_, and only necessary when you wish to perform time-based synchronization or achieve time dilation effects.
+
+`dt` is the elapsed time since the last call to `update`, in milliseconds.

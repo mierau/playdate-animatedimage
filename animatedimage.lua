@@ -45,12 +45,14 @@ function AnimatedImage.new(image_table_path, options)
 	setmetatable(animated_image, AnimatedImage)
 	animated_image.image_table = image_table
 	animated_image.loop = animation_loop
+	animated_image.elapsedTime = 0
 	
 	return animated_image
 end
 
 function AnimatedImage:reset()
 	self.loop.frame = self.loop.startFrame
+	self.elapsedTime = 0
 end
 
 function AnimatedImage:setDelay(delay)
@@ -93,6 +95,14 @@ function AnimatedImage:getFrame()
 	return self.loop.frame
 end
 
+function AnimatedImage:setTime(milliseconds)
+	self.elapsedTime = milliseconds
+end
+
+function AnimatedImage:getTime()
+	return self.elapsedTime
+end
+
 function AnimatedImage:setFirstFrame(frame)
 	self.loop.startFrame = frame
 end
@@ -107,6 +117,19 @@ end
 
 function AnimatedImage:getImage()
 	return self.image_table:getImage(self.loop.frame)
+end
+
+-- calling update is OPTIONAL, and only necessary when you wish to use time-based synchronization for the animation
+-- dt: the elapsed time since the last call to update, in milliseconds
+function AnimatedImage:update(dt)
+	if self.loop.paused then return end
+	self.elapsedTime += dt
+	local frameDelta = self.elapsedTime / self.loop.delay * self.loop.step * 1000
+	local maxFrameDelta = self.loop.endFrame - self.loop.startFrame
+	if frameDelta > maxFrameDelta then
+		frameDelta = self.loop.shouldLoop and frameDelta % maxFrameDelta or maxFrameDelta
+	end
+	self.loop.frame = self.loop.startFrame + frameDelta
 end
 
 AnimatedImage.__index = function(animated_image, key)
